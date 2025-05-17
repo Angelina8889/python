@@ -66,101 +66,87 @@ else:
 r = float(input("Введите число 1: "))
 t = float(input("Введите число 2: "))
 m = float(input("Введите число 3: "))
-min_num = min(r, t, m)
-max_num = max(r, t, m)
-mid_num = (r+ t+ m) - min_num - max_num
-print("Числа в порядке возрастания:", min_num, mid_num, max_num)
+nums = [r,t,m]
+nums.sort()
+print("Числа в порядке возрастания:", nums[0], nums [1], nums[2])
 
 #Задача 8
-def calculate_salary(sales):
-    base_salary = 200  # Базовая зарплата
-    if sales <= 500:
-        commission = sales * 0.03
-    elif sales <= 1000:
-        commission = sales * 0.05
-    else:
-        commission = sales * 0.08
-    total_salary = base_salary + commission
-    return total_salary
 sales1 = float(input("Введите уровень продаж для менеджера 1: "))
 sales2 = float(input("Введите уровень продаж для менеджера 2: "))
 sales3 = float(input("Введите уровень продаж для менеджера 3: "))
 
-salary1 = calculate_salary(sales1)
-salary2 = calculate_salary(sales2)
-salary3 = calculate_salary(sales3)
-
-max_salary = salary1
-best_manager = 1
-
-if salary2 > max_salary:
-    max_salary = salary2
-    best_manager = 2
-
-if salary3 > max_salary:
-    max_salary = salary3
-    best_manager = 3
-
-if best_manager == 1:
-    salary1 += 200
-elif best_manager == 2:
-    salary2 += 200
+if sales1 <= 500:
+    salary1 = 200 + sales1 * 0.03
+elif sales1 <= 1000:
+    salary1 = 200 + sales1 * 0.05
 else:
-    salary3 += 200
+    salary1 = 200 + sales1 * 0.08
 
-print("\nИтоговые зарплаты менеджеров:")
-print(f"Менеджер 1: {salary1} $")
-print(f"Менеджер 2: {salary2} $")
-print(f"Менеджер 3: {salary3} $")
+if sales2 <= 500:
+    salary2 = 200 + sales2 * 0.03
+elif sales2 <= 1000:
+    salary2= 200 + sales2 * 0.05
+else:
+    salary2 = 200 + sales2 * 0.08
 
-print(f"\nЛучший менеджер: Менеджер {best_manager} (премия 200$ начислена)")
+if sales3 <= 500:
+    salary3 = 200 + sales3 * 0.03
+elif sales1 <= 1000:
+    salary3 = 200 + sales3 * 0.05
+else:
+    salary3 = 200 + sales3 * 0.08
+
+best_salary = max(salary1, salary2, salary3)
+if best_salary == salary1:
+    salary1 +=200
+    best = 1
+elif best_salary == salary2:
+    salary2 +=200
+    best = 2
+else:
+    salary3 +=200
+    best =3
+
+print(f"Зарплата 1 менеджера: {salary1}")
+print(f"Зарплата 1 менеджера: {salary2}")
+print(f"Зарплата 1 менеджера: {salary3}")
+print(f"Лучший менеджер: {best}-ый")
+
+
+
 
 #Задача 9
-def days_in_month(year, month):
-    if month == 2:
-        if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
-            return 29
-        else:
-            return 28
-    elif month in [4, 6, 9, 11]:
-        return 30
-    else:
-        return 31
-
 year = int(input("Введите год: "))
 month = int(input("Введите месяц (1-12): "))
-
-if month < 1 or month > 12:
-    print("Ошибка: месяц должен быть от 1 до 12!")
+if month == 2:
+    if (year % 4 == 0 and year % 100 !=0) or (year %400 == 0):
+        print("29 дней")
+    else:
+        print("28 дней")
+elif month in [1, 3, 5, 7, 8, 10, 12]:
+    print("31 день")
+elif month in [4,6,9,11]:
+    print("30 дней")
 else:
-    days = days_in_month(year, month)
-    print(f"В {month}-м месяце {year} года — {days} дней.")
+    print("Неккоректный номер месяца")
+
+
 
 #задача 10
-def calculate_ticket_price(age, time):
-    if age < 3:
-        price = 0
-    elif 3 <= age <= 12:
-        price = 10
-    else:
-        price = 15
-
-    if time <= 12:
-        price *= 0.8
-
-    return price
-
-
-
 age = int(input("Введите возраст посетителя: "))
 time = int(input("Введите время сеанса (часы, 0-23): "))
+price = 0
 
-if age < 0:
-    print("Ошибка: возраст не может быть отрицательным!")
-elif time < 0 or time > 23:
-    print("Ошибка: время должно быть от 0 до 23 часов!")
+if age < 3:
+    price = 0
+elif age <= 12:
+    price = 10
 else:
-    cost = calculate_ticket_price(age, time)
-    print(f"Стоимость билета: ${cost:.2f}")
+    price = 15
+
+if time <= 12 and price > 0:
+    price *= 0.8
+
+print(f"Стоимость билета к оплате:{price}")
 
 
