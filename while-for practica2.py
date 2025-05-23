@@ -20,11 +20,11 @@ if n < 2:
     is_prime = False
 else:
     for i in range (2, n):
-        if n % i == 0
-            is_prime = false
+        if n % i == 0:
+            is_prime = False
             break
 
-if is_prime = True
+if is_prime == True:
     print("Число простое")
 else:
     print("Числе не является простым")
@@ -36,15 +36,44 @@ for i in range(2, n+1):
     result *= i
     print(result)
 
-
-
-
-
+#задача 5
+a, b = 0, 1
+count = 0
+while count < 10:
+    print(a, end=' ')
+    a, b = b, a + b
+    count += 1
 
 
 #задача 6
 for числа in range (10, 0 , -1):
     print(числа)
 
+#задача 7
+s = input("Введите строку: ")
+vowels = 'аеёиоуыэюяaeiouy'
+count = 0
+
+for char in s.lower():
+    if char in vowels:
+        count += 1
+
+print(f"Количество гласных букв: {count}")
+
+#задача 8
+number = int(input("Введите число: "))
+sum_digits = 0
+
+while number > 0:
+    sum_digits += number % 10
+    number = number // 10
+
+print(f"Сумма цифр: {sum_digits}")
+
+#задача 9
+for i in range(1, 11):
+    for j in range(1, 11):
+        print(f"{i} x {j} = {i*j}", end='\t')
+    print()
 
 
