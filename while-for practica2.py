@@ -76,4 +76,14 @@ for i in range(1, 11):
         print(f"{i} x {j} = {i*j}", end='\t')
     print()
 
+#задача 10
+numbers = [0, 15 , -8, 3, -55]
+result = []
+for i in numbers:
+    if abs(i) > 5:
+        result.append(i)
+    print(result)
+
+#задача 11
+
 
