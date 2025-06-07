@@ -103,11 +103,22 @@
 #     print("Тут ничего нет. Еще есть вопросы?")
 
 #задача 13
-alphabet = "аиоуыэеёюябвгджзйклмнпрстфхцчшщъь"
-for position in range(11):
-   print("^" * 27)
-   for letter in alphabet:
-       if alphabet.index(letter) % 11 == position:
-           print("| ", letter.upper(), letter, " |", end="")
-   print()
-print("^" *27)
+# alphabet = "аиоуыэеёюябвгджзйклмнпрстфхцчшщъь"
+# for position in range(11):
+#    print("^" * 27)
+#    for letter in alphabet:
+#        if alphabet.index(letter) % 11 == position:
+#            print("| ", letter.upper(), letter, " |", end="")
+#    print()
+# print("^" *27)
+
+#задача 14
+number = int(input("Введите число: "))
+divisors = set()
+for i in range (1, int(number**0.5)+1):
+    if number % i == 0:
+        divisors.add(i)
+        divisors.add(number // i )
+result = sorted(divisors)
+print(divisors)
+
