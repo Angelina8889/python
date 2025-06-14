@@ -42,3 +42,53 @@ def count_digits(number):
     return count
 print(count_digits(123456789))
 
+#задача 7
+def distance(x1, y1, x2, y2):
+    return (((x2 - x1)**2) + ((y2 - y1)**2))**0.5
+
+def triangle_perimetr(x1,y1,x2,y2,x3,y3):
+    a = distance(x1, y1, x2,y2)
+    b = distance(x2,y2, x3, y3)
+    c = distance(x3,y3,x1,y1)
+    return a+b+c
+print(triangle_perimetr(1, 2, 4, 5, 6, 7))
+
+
+#задача 8
+def is_prime(n):
+    if n < 2: return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+primes =[]
+for i in range (100,1000)
+    if is_prime(i):
+        primes.append(i)
+print(primes)
+
+#задача 9
+def sum_digits(n):
+    summa = 0
+    for d in str(n):
+        summa += int(d)
+    return summa
+
+
+def is_lucky(n):
+    s = str(n)
+    if sum_digits(s[:3]) == sum_digits(s[3:]):
+        print("Число счастливое")
+    else:
+        print("Число не счастливое")
+is_lucky(123321)
+
+#задача 10
+def max6(a,b,c,d,e,f):
+    return max(a,b,c,d,e,f)
+
+print(max6(2, 6, 8, 4, 5, 9))
+
+
+
