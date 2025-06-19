@@ -89,6 +89,42 @@
 #     return max(a,b,c,d,e,f)
 #
 # print(max6(2, 6, 8, 4, 5, 9))
+#задача 11
+def swap(x, y):
+    return y, x
+
+a = 1
+b = 2
+c = 3
+d = 4
+
+print("До обмена:")
+print(f"a = {a}, b = {b}, c = {c}, d = {d}")
+
+a, b = swap(a, b)
+c, d = swap(c, d)
+
+print("\nПосле обмена:")
+print(f"a = {a}, b = {b}, c = {c}, d = {d}")
+
+#задача 12
+import math
+
+def perimeter(a, b, c):
+    return a + b + c
+
+def area(a, b, c):
+    p = perimeter(a, b, c) / 2
+    return math.sqrt(p * (p - a) * (p - b) * (p - c))
+
+a1, b1, c1 = 8, 9, 10
+a2, b2, c2 = 5, 12, 13
+
+sum_perimeters = perimeter(a1, b1, c1) + perimeter(a2, b2, c2)
+sum_areas = area(a1, b1, c1) + area(a2, b2, c2)
+
+print(f"Сумма периметров: {sum_perimeters}")
+print(f"Сумма площадей: {sum_areas:.2f}")
 #
 # #задача 13
 # def trapezoid_perimetr_area(a, b, h):
@@ -102,51 +138,89 @@
 # print((f"Сумма периметров трапеций: {tr1[0]+tr2[0]"))
 # print((f"Сумма площадей трапеций: {tr1[1]+tr2[1]"))
 
-#задача 14
-def circle_area(R):
-    return 3,14*R**2
+# #задача 14
+# def circle_area(R):
+#     return 3,14*R**2
+#
+# def rectangle_area(a, b):
+#     return  a*b
+# def triangle_area(a, h):
+#     return  (a*h)*0.5
+#
+# print("1-Круг")
+# print("2-Прямоугольник")
+# print("3-Треугольник")
+# figure = input("Выберете фигуру, площадь которой вы хотите найти: ")
+# if figure == "1":
+#     R = float(input("Введите радиус круга: "))
+#     print(circle_area(R))
+# elif figure == "2":
+#     a = float(input("Введите сторону а:"))
+#     b = float(input("Введите сторону b:"))
+#     print(rectangle_area(a, b))
+# elif figure == "3":
+#     a = float(input("Введите сторону а:"))
+#     h = float(input("Введите сторону h:"))
+#     print(triangle_area(a, h))
+# else:
+#     print("Введена ошибочная команда")
+#
+# #задача 16
+# def draw_square(n, s):
+#     for _ in range(n):
+#         print(n*s)
+# side = int(input("Введите сторону квадрата: "))
+# symbole = input("Введите символ: ")
+# draw_square(side, symbole)
+#
+# #задача 17
+# def deliteli(n):
+#     for i in range(1, n+1):
+#         if n% i == 0:
+#             print(i, end=" ")
+#     print()
+#
+# while True:
+#     x = int(input("Введите число (0 до выхода из программы): "))
+#     if x == 0:
+#         break
+#     deliteli(x)
+#задача 19
+def pointInRect(x, y, x1, y1, x2, y2):
+    return (x1 <= x <= x2) and (y2 <= y <= y1)
 
-def rectangle_area(a, b):
-    return  a*b
-def triangle_area(a, h):
-    return  (a*h)*0.5
+x, y = 5, 6
+x1, y1 = 7, 8
+x2, y2 = 7, 2
 
-print("1-Круг")
-print("2-Прямоугольник")
-print("3-Треугольник")
-figure = input("Выберете фигуру, площадь которой вы хотите найти: ")
-if figure == "1":
-    R = float(input("Введите радиус круга: "))
-    print(circle_area(R))
-elif figure == "2":
-    a = float(input("Введите сторону а:"))
-    b = float(input("Введите сторону b:"))
-    print(rectangle_area(a, b))
-elif figure == "3":
-    a = float(input("Введите сторону а:"))
-    h = float(input("Введите сторону h:"))
-    print(triangle_area(a, h))
-else:
-    print("Введена ошибочная команда")
+print(pointInRect(x, y, x1, y1, x2, y2))
 
-#задача 16
-def draw_square(n, s):
-    for _ in range(n):
-        print(n*s)
-side = int(input("Введите сторону квадрата: "))
-symbole = input("Введите символ: ")
-draw_square(side, symbole)
+#задача 20
+def pointInTriangle(x, y, x1, y1, x2, y2, x3, y3):
+    def area(a, b, c, d, e, f):
+        return abs((a*(d - f) + c*(f - b) + e*(b - d)) / 2)
 
-#задача 17
-def deliteli(n):
-    for i in range(1, n+1):
-        if n% i == 0:
-            print(i, end=" ")
-    print()
+    A = area(x1, y1, x2, y2, x3, y3)
+    A1 = area(x, y, x2, y2, x3, y3)
+    A2 = area(x1, y1, x, y, x3, y3)
+    A3 = area(x1, y1, x2, y2, x, y)
 
-while True:
-    x = int(input("Введите число (0 до выхода из программы): "))
-    if x == 0:
-        break
-    deliteli(x)
+    return abs(A - (A1 + A2 + A3)) < 1e-10
+
+x, y = 5, 5
+x1, y1 = 3, 7
+x2, y2 = 0, 5
+x3, y3 = 5, 0
+
+print(pointInTriangle(x, y, x1, y1, x2, y2, x3, y3))
+
+#задача 21
+def calculate_score(scores):
+    if len(scores) != 5:
+        return None
+    sorted_scores = sorted(scores)
+    return sum(sorted_scores[1:-1]) / 3
+
+scores = [55, 36, 75, 77, 100]
+print(calculate_score(scores))
 
