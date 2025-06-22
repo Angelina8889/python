@@ -223,4 +223,3 @@ def calculate_score(scores):
 
 scores = [55, 36, 75, 77, 100]
 print(calculate_score(scores))
-
