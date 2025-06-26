@@ -110,3 +110,57 @@ def fibonacci(n):
         return n
     return fibonacci(n - 1) + fibonacci(n - 2)
 print(fibonacci(6))
+
+
+
+#zadacha 1
+class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+
+class Square(Rectangle):
+    def __init__(self, side):
+        super().__init__(side, side)
+
+rect = Rectangle(8, 12)
+print(rect.area())
+print(rect.perimeter())
+
+sq = Square(5)
+print(sq.area())
+print(sq.perimeter())
+
+#zadacha 2
+class Person:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+
+    def introduce(self):
+        print(f"Привет! Меня зовут {self.name}, мне {self.age} лет, я {self.gender}.")
+
+
+class Employee(Person):
+    def __init__(self, name, age, gender, salary, position):
+        super().__init__(name, age, gender)
+        self.salary = salary
+        self.position = position
+
+    def work(self):
+        print(f"Я работаю как {self.position} и получаю {self.salary} рублей.")
+
+person = Person("Андрей", 28, "мужчина")
+person.introduce()
+
+employee = Employee("Алина", 25, "женщина", 85000, "QA инженер")
+employee.introduce()
+employee.work()
